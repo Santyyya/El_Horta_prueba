@@ -55,7 +55,7 @@ session_start();
         </section>
         <section class="photos">
             <div class="photo-item">
-                <img src="Resourses/carne-asada-tacos1.jpg" alt="Taco de carne asada">
+                <img src="Resourses/carne-asada-tacos1.jpg" alt="Taco de bistec">
                 <p>Taco de Carne Asada</p>
             </div>
             <div class="photo-item">
@@ -63,7 +63,7 @@ session_start();
                 <p>Taco al Pastor</p>
             </div>
             <div class="photo-item">
-                <img src="Resourses/tortilla-gd951f0cdc_1920-1.jpg" alt="Taco de pollo">
+                <img src="Resourses/Platillos/chorizo.jpg" alt="Taco de chorizo">
                 <p>Taco de Pollo</p>
             </div>
             <div class="menu-button-container">
