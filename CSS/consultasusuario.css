@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.nav-logo .logo {
+    max-width: 100px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: #FFD700;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 2px solid #FFD700;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #FFD700;
+    color: #000;
+}
+
+.admin-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.admin-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FFD700;
+}
+
+.admin-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-container table, .admin-container th, .admin-container td {
+    border: 1px solid #FFD700;
+}
+
+.admin-container th, .admin-container td {
+    padding: 10px;
+    text-align: left;
+}
+
+.admin-container th {
+    background-color: #444;
+    color: #FFD700;
+}
+
+.admin-container tr:nth-child(even) {
+    background-color: #555;
+}
+form {
+    display: inline;
+}
+
+button[type="submit"] {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #CC0000;
+}
+
+
+footer {
+    background-color: #333;
+    color: #FFD700;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer .social-icons {
+    margin-bottom: 10px;
+}
+
+footer .social-icons a {
+    color: #FFD700;
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .social-icons a:hover {
+    color: #fff;
+}
+
+
+
