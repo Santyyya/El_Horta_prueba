@@ -50,7 +50,7 @@ session_start();
     </header>
     <div class="container">
         <section class="intro">
-            <h2>Bienvenidos a la Taquería El Horta</h2>
+            <h2>Bienvenidos a la Taquería El Horto</h2>
             <p>¡Los mejores tacos de la ciudad, a solo un paso de tu casa!</p>
         </section>
         <section class="photos">
