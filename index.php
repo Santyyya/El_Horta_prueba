@@ -11,7 +11,6 @@ session_start();
     <title>Taquería El Horta</title>
     <link rel="stylesheet" href="CSS/indexcss.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
 </head>
 <body>
     <header>
@@ -31,11 +30,7 @@ session_start();
                     <?php if (isset($_SESSION['nombre'])): ?>
                         <li class="user-icon" onclick="toggleMenu()">
                             <span class="user-initials"><?php echo strtoupper(substr($_SESSION['nombre'], 0, 2)); ?></span>
-                            <div class="user-menu" id="user-menu">
-                                <p><strong><?php echo htmlspecialchars($_SESSION['nombre']); ?></strong></p>
-                                
-                                <a href="logout.php">Cerrar sesión</a>
-                            </div>
+                            <div class="user-menu" id="user-menu"></div>
                         </li>
                     <?php else: ?>
                         <li><a href="signup.php">Crea tu cuenta</a></li>
@@ -50,13 +45,13 @@ session_start();
     </header>
     <div class="container">
         <section class="intro">
-            <h2>Bienvenidos a la Taquería El Horto</h2>
+            <h2>Bienvenidos a la Taquería El Horta</h2>
             <p>¡Los mejores tacos de la ciudad, a solo un paso de tu casa!</p>
         </section>
         <section class="photos">
             <div class="photo-item">
                 <img src="Resourses/carne-asada-tacos1.jpg" alt="Taco de bistec">
-                <p>Taco de Carne Asada</p>
+                <p>Taco de bistec</p>
             </div>
             <div class="photo-item">
                 <img src="Resourses/images.jpeg" alt="Taco al pastor">
@@ -64,7 +59,7 @@ session_start();
             </div>
             <div class="photo-item">
                 <img src="Resourses/Platillos/chorizo.jpg" alt="Taco de chorizo">
-                <p>Taco de Pollo</p>
+                <p>Taco de chorizo</p>
             </div>
             <div class="menu-button-container">
                 <a href="menu.php" class="menu-button">Ver Menú Completo</a>
@@ -94,18 +89,34 @@ session_start();
         <p>&copy; 2024 Taquería El Horta. Todos los derechos reservados.</p>
     </footer>
 
+
+    
     <script>
+        
+        //Script JS para el icono de usuario
+
         function toggleMenu() {
             var menu = document.getElementById('user-menu');
             menu.classList.toggle('active');
         }
-        // Cierra el menú si se hace clic fuera de él
+
         document.addEventListener('click', function(event) {
             var menu = document.getElementById('user-menu');
             var icon = document.querySelector('.user-icon');
             if (!menu.contains(event.target) && !icon.contains(event.target)) {
                 menu.classList.remove('active');
             }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var userMenu = document.getElementById('user-menu');
+            <?php if (isset($_SESSION['nombre'])): ?>
+                userMenu.innerHTML = '<p><strong><?php echo htmlspecialchars($_SESSION['nombre']); ?></strong></p>';
+                <?php if ($_SESSION['nombre'] == 'admin'): ?>
+                    userMenu.innerHTML += '<a href="consultasusuario.php">Panel de control</a>';
+                <?php endif; ?>
+                userMenu.innerHTML += '<a href="logout.php">Cerrar sesión</a>';
+            <?php endif; ?>
         });
     </script>
 </body>

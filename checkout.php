@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_SESSION['carrito'])) {
     
     $usuarios_idusuarios = 1; // Ajustar según el usuario autenticado
 
-    // Usar declaraciones preparadas para evitar problemas de formato y SQL Injection
     $sql_pedido = "INSERT INTO pedidos (fecha, hora, total, usuarios_idusuarios) VALUES (?, ?, ?, ?)";
     if ($stmt = $db->prepare($sql_pedido)) {
         $stmt->bind_param("ssii", $fecha, $hora, $total, $usuarios_idusuarios);
@@ -97,7 +96,6 @@ $db->close();
             mostrarBanner();
         </script>
     <?php endif; ?>
-    <!-- Contenido de la página -->
 </body>
 </html>
 

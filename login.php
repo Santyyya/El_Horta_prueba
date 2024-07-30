@@ -1,38 +1,25 @@
 <?php
+require 'conexion.php';
 session_start();
-include('conexion.php'); // Conexion a la BD
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST['nombre'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $correo = $_POST['nombre'];
     $contraseña = $_POST['contraseña'];
 
-    // Preparar y ejecutar la consulta SQL
-    $stmt = $db->prepare("SELECT idusuarios, nombre FROM usuarios WHERE nombre = ? AND contraseña = ?");
-    $stmt->bind_param("ss", $nombre, $contraseña);
+    $sql = "SELECT * FROM usuarios WHERE nombre = ? AND contraseña = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('ss', $correo, $contraseña);
     $stmt->execute();
-    $stmt->store_result();
+    $result = $stmt->get_result();
 
-    // Verificar si se encontró el usuario
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($idusuario, $nombre);
-        $stmt->fetch();
-
-        // Guardar el nombre de usuario en la sesión
-        $_SESSION['nombre'] = $nombre;
-
-        // Verificar si el nombre de usuario es "admin"
-        if ($nombre === "admin") {
-            $_SESSION['is_admin'] = true;
-            header("Location: consultasusuario.php"); // Redirigir a la página de administración
-        } else {
-            header("Location: index.php"); // Redirigir a la página de usuario
-        }
-        exit();
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+        $_SESSION['nombre'] = $user['nombre'];
+        header('Location: index.php');
     } else {
-        $error_message = "Nombre de usuario o contraseña incorrectos.";
+        // error de inicio de sesión
+        echo "Correo o contraseña incorrectos.";
     }
-    $stmt->close();
-    $db->close();
 }
 ?>
 
