@@ -1,0 +1,324 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+}
+
+header {
+    position: relative;
+    height: 400px; /* Ajusta la altura según tus necesidades */
+    color: #fff;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-container .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Reducir opacidad del fondo para ver más el video */
+}
+
+.header-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para la barra de navegación */
+    z-index: 1;
+    height: 70px; /* Reducir altura de la barra de navegación */
+    box-sizing: border-box; /* Asegurarse de que el padding no afecte la altura total */
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100px; /* Reducir tamaño del logo */
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end; /* Alinear los botones a la derecha */
+    align-items: center; /* Centrar verticalmente los botones */
+    flex-grow: 1;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Reducir el espacio entre los elementos de navegación */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: #FFD700; /* Amarillo dorado */
+    text-decoration: none;
+    padding: 5px 10px; /* Reducir padding de los enlaces */
+    border: 2px solid #FFD700;
+    border-radius: 20px; /* Reducir borde de los enlaces */
+    transition: all 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #FFD700;
+    color: #000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.intro {
+    text-align: center;
+}
+
+.photos {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.photo-item {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.photos img {
+    width: 300px; /* Ancho fijo para todas las imágenes */
+    height: 200px; /* Alto fijo para todas las imágenes */
+    object-fit: cover; /* Recorta la imagen para llenar el área especificada */
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* Sombra amarilla */
+}
+
+.menu-button-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.menu-button {
+    background-color: #FFD700;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid #FFD700;
+    transition: all 0.3s;
+}
+
+.menu-button:hover {
+    background-color: #000;
+    color: #FFD700;
+    border-color: #FFD700;
+}
+
+.info {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.info h2 {
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 215, 0, 0.1); /* Fondo ligeramente amarillo */
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* Sombra amarilla */
+}
+
+.info-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.info-text {
+    flex: 1;
+    text-align: left; /* Alinear el texto a la izquierda */
+}
+
+.info-button-container {
+    text-align: right; /* Alinear el botón a la derecha */
+    margin-top: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #FFD700;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer .social-icons {
+    margin-bottom: 10px;
+}
+
+footer .social-icons a {
+    color: #FFD700;
+    margin: 0 10px;
+    font-size: 24px; /* Tamaño de los iconos */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .social-icons a:hover {
+    color: #fff;
+}
+
+/*ESTILO MENU*/
+
+
+/* Estilos generales y del index */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+}
+
+header.simple-header {
+    background-color: #000;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    max-width: 150px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.menu {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.menu h2 {
+    margin: 10px 0; /* Ajuste del margen superior e inferior */
+}
+
+.menu-section {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.menu-section img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.menu-section img:hover {
+    transform: scale(1.05);
+}
+
+.menu-section .menu-section-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #FFD700;
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.menu-button {
+    background-color: #FFD700;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid #FFD700;
+    transition: all 0.3s;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.menu-button:hover {
+    background-color: #000;
+    color: #FFD700;
+    border-color: #FFD700;
+}
+
+footer {
+    background-color: #333;
+    color: #FFD700;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer .social-icons {
+    margin-bottom: 10px;
+}
+
+footer .social-icons a {
+    color: #FFD700;
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .social-icons a:hover {
+    color: #fff;
+}
+
+
+
