@@ -1,5 +1,5 @@
 <?php 
- $db= mysqli_connect('localhost', 'root', 'Santy2005', 'elhorta2');
+ $db= mysqli_connect('localhost', 'root', '1234', 'basetacos');
  if(!$db){
   echo "error conexion";
  }
