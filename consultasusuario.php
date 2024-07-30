@@ -1,12 +1,29 @@
 <?php
 require 'conexion.php';
 
+// Obtener todos los usuarios
 $sql = "SELECT * FROM usuarios";
 $result = mysqli_query($db, $sql);
 
-$sql = "SELECT * FROM pedidos";
-$result2 = mysqli_query($db, $sql);
+// Obtener todos los pedidos
+$sql2 = "SELECT * FROM pedidos";
+$result2 = mysqli_query($db, $sql2);
 
+// Función para obtener los detalles de un pedido
+function obtenerDetallesPedido($pedido_id) {
+    global $db;
+    $sql = "SELECT * FROM factura WHERE pedidos_idpedidos = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("i", $pedido_id);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
+$detallesPedido = [];
+if (isset($_GET['detalles'])) {
+    $pedido_id = $_GET['detalles'];
+    $detallesPedido = obtenerDetallesPedido($pedido_id);
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +33,6 @@ $result2 = mysqli_query($db, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administración de Usuarios</title>
     <link rel="stylesheet" href="CSS/consultasusuario.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <header>
@@ -55,15 +71,16 @@ $result2 = mysqli_query($db, $sql);
                 <td><?php echo $row['contraseña']; ?></td>
                 <td><?php echo $row['correo']; ?></td>
                 <td>
-                    <form action='eliminar_usuario.php' method='POST'>
-                        <input type='hidden' name='id' value='<?php echo $row['idusuarios']; ?>'>
-                        <button type='submit'>Eliminar</button>
+                    <form action="eliminar_usuario.php" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $row['idusuarios']; ?>">
+                        <button type="submit">Eliminar</button>
                     </form>
                 </td>
             </tr>
             <?php endwhile; ?>
         </table>
     </div>
+
     <div class="admin-container">
         <h1>Pedidos Realizados</h1>
         <table>
@@ -73,7 +90,8 @@ $result2 = mysqli_query($db, $sql);
                 <th>Hora</th>
                 <th>Total</th>
                 <th>Usuario Id</th>
-                <th>Acciones</th>
+                <th>Detalles del pedido</th>
+                <th>Eliminar</th>
             </tr>
             <?php while ($row = mysqli_fetch_assoc($result2)): ?>
             <tr>
@@ -83,52 +101,35 @@ $result2 = mysqli_query($db, $sql);
                 <td><?php echo $row['total']; ?></td>
                 <td><?php echo $row['usuarios_idusuarios']; ?></td>
                 <td>
-                    <button type='button' class='btn btn-info' data-toggle='modal' data-target='#detallePedidoModal<?php echo $row['idpedidos']; ?>'>Ver detalles</button>
+                    <a href="?detalles=<?php echo $row['idpedidos']; ?>">Ver detalles</a>
+                </td>
+                <td>
+                    <form action="eliminar_pedido.php" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $row['idpedidos']; ?>">
+                        <button type="submit">Eliminar</button>
+                    </form>
                 </td>
             </tr>
-            
-            <!-- Modal -->
-            <div class='modal fade' id='detallePedidoModal<?php echo $row['idpedidos']; ?>' tabindex='-1' role='dialog' aria-labelledby='detallePedidoModalLabel<?php echo $row['idpedidos']; ?>' aria-hidden='true'>
-                <div class='modal-dialog' role='document'>
-                    <div class='modal-content'>
-                        <div class='modal-header'>
-                            <h5 class='modal-title' id='detallePedidoModalLabel<?php echo $row['idpedidos']; ?>'>Detalles del Pedido #<?php echo $row['idpedidos']; ?></h5>
-                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                <span aria-hidden='true'>&times;</span>
-                            </button>
-                        </div>
-                        <div class='modal-body'>
-                            <?php
-                            $pedido_id = $row['idpedidos'];
-                            $detalle_sql = "SELECT * FROM factura WHERE pedidos_idpedidos = $pedido_id";
-                            $detalle_result = mysqli_query($db, $detalle_sql);
-                            ?>
-                            <table class='table table-striped'>
-                                <thead>
-                                    <tr>
-                                        <th>Producto</th>
-                                        <th>Cantidad</th>
-                                        <th>Precio</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while ($detalle_row = mysqli_fetch_assoc($detalle_result)): ?>
-                                    <tr>
-                                        <td><?php echo $detalle_row['mision']; ?></td>
-                                        <td><?php echo $detalle_row['total']; ?></td>
-                                    </tr>
-                                    <?php endwhile; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class='modal-footer'>
-                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <?php endwhile; ?>
         </table>
+
+        <?php if (!empty($detallesPedido)): ?>
+        <div class="pedido-detalles">
+            <h2>Detalles del Pedido <?php echo htmlspecialchars($pedido_id); ?></h2>
+            <table>
+                <tr>
+                    <th>producto</th>
+                    <th>Total</th>
+                </tr>
+                <?php foreach ($detallesPedido as $detalle): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($detalle['mision']); ?></td>
+                    <td><?php echo htmlspecialchars($detalle['total']); ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+        <?php endif; ?>
     </div>
 
     <footer>
@@ -140,9 +141,5 @@ $result2 = mysqli_query($db, $sql);
         </div>
         <p>&copy; 2024 Taquería El Horta. Todos los derechos reservados.</p>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
