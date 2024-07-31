@@ -2,6 +2,11 @@
 session_start();
 include('productos.php'); // Asegúrate de que productos.php tiene las imágenes
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php"); // Redirigir al usuario a la página de inicio de sesión si no está logueado
+    exit;
+}
+
 // Inicializa el carrito si no existe
 if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = array();

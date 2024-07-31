@@ -4,6 +4,13 @@ require 'conexion.php';
 require 'productos.php';
 date_default_timezone_set('America/Mexico_City');
 
+// Verificar si hay un usuario autenticado
+if (!isset($_SESSION['user_id'])) {
+    echo "No has iniciado sesión.";
+    exit;
+}
+
+$user_id = $_SESSION['user_id']; // Obtener el ID del usuario desde la sesión
 
 if ($db->connect_error) {
     die("Conexión fallida: " . $db->connect_error);
@@ -21,12 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_SESSION['carrito'])) {
 
     $fecha = date("Y-m-d"); // Obtiene la fecha actual en formato 'YYYY-MM-DD'
     $hora = date("H:i:s"); // Obtiene la hora actual en formato 'HH:MM:SS'
-    
-    $usuarios_idusuarios = 1; // Ajustar según el usuario autenticado
 
     $sql_pedido = "INSERT INTO pedidos (fecha, hora, total, usuarios_idusuarios) VALUES (?, ?, ?, ?)";
     if ($stmt = $db->prepare($sql_pedido)) {
-        $stmt->bind_param("ssii", $fecha, $hora, $total, $usuarios_idusuarios);
+        $stmt->bind_param("ssii", $fecha, $hora, $total, $user_id);
 
         if ($stmt->execute()) {
             $idpedido = $db->insert_id;
@@ -98,6 +103,3 @@ $db->close();
     <?php endif; ?>
 </body>
 </html>
-
-
-

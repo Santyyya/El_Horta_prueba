@@ -1,24 +1,25 @@
 <?php
-require 'conexion.php';
 session_start();
+require 'conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $correo = $_POST['nombre'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST['nombre'];
     $contraseña = $_POST['contraseña'];
 
     $sql = "SELECT * FROM usuarios WHERE nombre = ? AND contraseña = ?";
     $stmt = $db->prepare($sql);
-    $stmt->bind_param('ss', $correo, $contraseña);
+    $stmt->bind_param("ss", $nombre, $contraseña);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
+    if ($result->num_rows == 1) {
         $user = $result->fetch_assoc();
-        $_SESSION['nombre'] = $user['nombre'];
-        header('Location: index.php');
+        $_SESSION['user_id'] = $user['idusuarios']; // Guardar el ID del usuario en la sesión
+        $_SESSION['nombre'] = $user['nombre']; // Guardar el nombre del usuario en la sesión
+        header("Location: index.php"); // Redirigir al usuario a la página de inicio
+        exit;
     } else {
-        // error de inicio de sesión
-        echo "Correo o contraseña incorrectos.";
+        echo "Nombre de usuario o contraseña incorrectos.";
     }
 }
 ?>
@@ -30,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="CSS/login.css">
-    
 </head>
 <body>
     <header>
@@ -52,6 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                             <div class="user-menu" id="userMenu">
                                 <a href="profile.php">Perfil</a>
+                                <?php if ($_SESSION['nombre'] == 'admin'): ?>
+                                    <a href="consultasusuario.php">Panel de control</a>
+                                <?php endif; ?>
                                 <a href="logout.php">Cerrar sesión</a>
                             </div>
                         </li>
