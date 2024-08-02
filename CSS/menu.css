@@ -128,68 +128,105 @@ footer .social-icons a:hover {
 
 /* Media Queries para el diseño responsive del menú */
 
-/* Estilo general para tamaños de pantalla grandes */
-@media (min-width: 1024px) {
-    header {
-        padding: 10px 20px;
-    }
-
-    nav ul {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .menu-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .menu-item img {
-        height: 200px; /* Ajustar altura de las imágenes */
-    }
-}
-
-/* Estilo para tablets y pantallas medianas */
+/* Estilos responsive */
 @media (max-width: 1024px) {
-    header {
-        padding: 10px 15px;
+    .nav-logo .logo {
+        max-width: 80px;
     }
-
+    
     nav ul {
-        flex-direction: column;
-        align-items: flex-start;
         gap: 10px;
     }
 
-    .menu-grid {
-        grid-template-columns: repeat(2, 1fr);
+    nav ul li a {
+        padding: 4px 8px;
+        font-size: 14px;
     }
 
-    .menu-item img {
-        height: 150px; /* Ajustar altura de las imágenes */
+    .admin-container {
+        padding: 15px;
+    }
+
+    .admin-container h1 {
+        font-size: 24px;
+    }
+
+    .admin-container th, .admin-container td {
+        padding: 8px;
     }
 }
 
-/* Estilo para móviles y pantallas pequeñas */
 @media (max-width: 768px) {
     header {
-        padding: 10px 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .nav-logo {
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-logo .logo {
+        max-width: 100px;
+    }
+
+    nav {
+        width: 100%;
     }
 
     nav ul {
         flex-direction: column;
+        gap: 8px;
+        width: 100%;
         align-items: flex-start;
-        gap: 5px;
     }
 
-    .menu-grid {
-        grid-template-columns: 1fr;
+    nav ul li {
+        width: 100%;
     }
 
-    .menu-item img {
-        height: auto; /* Ajustar altura de las imágenes para que se adapten */
+    nav ul li a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 8px;
     }
 
-    .order-button {
-        width: 100%; /* Hacer que el botón ocupe todo el ancho disponible */
+    .admin-container {
+        padding: 10px;
+    }
+
+    .admin-container h1 {
+        font-size: 20px;
+    }
+
+    .admin-container th, .admin-container td {
+        padding: 6px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-logo .logo {
+        max-width: 70px;
+    }
+
+    nav ul li a {
+        padding: 4px 6px;
+        font-size: 12px;
+    }
+
+    .admin-container {
+        padding: 5px;
+    }
+
+    .admin-container h1 {
+        font-size: 18px;
+    }
+
+    .admin-container th, .admin-container td {
+        padding: 4px;
+        font-size: 12px;
     }
 }
