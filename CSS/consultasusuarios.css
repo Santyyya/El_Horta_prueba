@@ -1,0 +1,157 @@
+/* Diseño general */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.nav-logo .logo {
+    max-width: 120px; /* Aumenta el tamaño del logo */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px; /* Aumenta el espacio entre los botones */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: #FFD700;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 2px solid #FFD700;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #FFD700;
+    color: #000;
+}
+
+/* Estilos para la página de administración */
+.admin-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.admin-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FFD700;
+}
+
+.admin-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Aumenta el espacio debajo de la tabla */
+}
+
+.admin-container table, .admin-container th, .admin-container td {
+    border: 1px solid #FFD700;
+}
+
+.admin-container th, .admin-container td {
+    padding: 15px; /* Aumenta el relleno en las celdas */
+    text-align: left;
+}
+
+.admin-container th {
+    background-color: #444;
+    color: #FFD700;
+}
+
+.admin-container tr:nth-child(even) {
+    background-color: #555;
+}
+
+.admin-container td form {
+    display: inline; /* Muestra el formulario en línea */
+}
+
+.admin-container button[type="submit"] {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 15px; /* Aumenta el tamaño del botón */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.admin-container button[type="submit"]:hover {
+    background-color: #CC0000;
+}
+
+footer {
+    background-color: #333;
+    color: #FFD700;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer .social-icons {
+    margin-bottom: 10px;
+}
+
+footer .social-icons a {
+    color: #FFD700;
+    margin: 0 15px; /* Aumenta el espacio entre los iconos sociales */
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .social-icons a:hover {
+    color: #fff;
+}
+
+/* Diseño responsive */
+@media (max-width: 1024px) {
+    nav ul {
+        gap: 20px;
+    }
+
+    .nav-logo .logo {
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .nav-logo .logo {
+        max-width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        gap: 10px;
+    }
+
+    .nav-logo .logo {
+        max-width: 60px;
+    }
+}
