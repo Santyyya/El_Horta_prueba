@@ -125,4 +125,71 @@ footer .social-icons a:hover {
     color: #fff;
 }
 
+/* Media Queries para el diseño responsive del menú */
+
+/* Estilo general para tamaños de pantalla grandes */
+@media (min-width: 1024px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    nav ul {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .menu-item img {
+        height: 200px; /* Ajustar altura de las imágenes */
+    }
+}
+
+/* Estilo para tablets y pantallas medianas */
+@media (max-width: 1024px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .menu-item img {
+        height: 150px; /* Ajustar altura de las imágenes */
+    }
+}
+
+/* Estilo para móviles y pantallas pequeñas */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-item img {
+        height: auto; /* Ajustar altura de las imágenes para que se adapten */
+    }
+
+    .order-button {
+        width: 100%; /* Hacer que el botón ocupe todo el ancho disponible */
+    }
+}
 
