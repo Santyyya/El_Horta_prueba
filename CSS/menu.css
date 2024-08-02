@@ -128,7 +128,6 @@ footer .social-icons a:hover {
 
 /* Media Queries para el diseño responsive del menú */
 
-/* Estilos responsive */
 @media (max-width: 1024px) {
     .nav-logo .logo {
         max-width: 80px;
