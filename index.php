@@ -16,7 +16,7 @@ session_start();
     <header>
         <div class="video-container">
             <video autoplay muted loop>
-                <source src="Resourses/Video de WhatsApp 2024-06-13 a las 11.36.48_9b9ec2d8.mp4" type="video/mp4">
+                <source src="Resourses/background_index.mp4" type="video/mp4">
                 Tu navegador no soporta videos HTML5.
             </video>
             <div class="overlay"></div>
@@ -68,7 +68,7 @@ session_start();
         <section class="info">
             <h2>Información sobre la Taquería</h2>
             <div class="info-item">
-                <img src="novedades.jpg" alt="Novedades">
+                <img src="Resourses/pngwing.com.png" alt="Novedades">
                 <div class="info-text">
                     <h3>Novedades</h3>
                     <p>Enterate de las novedades más recientes.</p>

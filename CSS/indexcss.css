@@ -39,18 +39,18 @@ header {
 }
 
 .header-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     display: flex;
-    align-items: center;
+    align-items: center; /* Centra verticalmente los elementos dentro del header */
     justify-content: space-between;
     padding: 10px 20px;
     background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para la barra de navegación */
     z-index: 1;
-    height: 70px; /* Reducir altura de la barra de navegación */
-    box-sizing: border-box; /* Asegurarse de que el padding no afecte la altura total */
+    height: 70px;
+    box-sizing: border-box; /* Asegúrate de que el padding no afecte la altura total */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .nav-logo {
@@ -64,10 +64,10 @@ header {
 
 nav {
     display: flex;
-    justify-content: flex-end; /* Alinear los botones a la derecha */
-    align-items: center; /* Centrar verticalmente los botones */
-    flex-grow: 1;
+    align-items: center; /* Alinea verticalmente los elementos de navegación */
+    margin-left: auto; /* Mueve la navegación a la derecha */
 }
+
 
 nav ul {
     list-style: none;
@@ -97,7 +97,7 @@ nav ul li a:hover {
 
 .container {
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 0 auto; /* Asegura que el contenedor esté centrado */
     padding: 0 20px;
 }
 
@@ -208,83 +208,159 @@ footer .social-icons a:hover {
 }
 
 /* Estilos específicos del ícono del usuario y el menú desplegable */
-    /* Estilos específicos del ícono del usuario y el menú desplegable */
-    
-    .user-icon {
+.user-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+}
+
+.user-initials {
+    font-size: 16px;
+}
+
+.user-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #FFD700;
+    color: #000;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    width: 200px; /* Ajusta el ancho según sea necesario */
+    max-height: 300px; 
+    overflow-y: auto; 
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+.user-menu.active {
+    display: block;
+}
+
+.user-menu a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+}
+
+.user-menu a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries para hacer la página responsiva */
+@media (min-width: 1024px) {
+    .header-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        height: 70px;
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .nav-logo {
+        margin-bottom: 0;
+    }
+
+    nav {
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        background-color: #FFD700;
-        color: white;
-        border-radius: 50%;
-        font-size: 18px;
-        font-weight: bold;
+        justify-content: flex-end;
+        margin-left: 0;
+    }
+
+    nav ul {
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    nav ul li a {
+        display: inline-block;
+        width: auto;
+        padding: 5px 10px;
+        border-radius: 20px;
         text-align: center;
-        line-height: 20px;
-        position: relative;
-        cursor: pointer;
-    }
-    
-    .user-menu {
-        display: none;
-        position: absolute;
-        top: 50px;
-        right: 10px;
-        background-color: white;
-        border: 1px solid #ddd;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        border-radius: 4px;
-        padding: 10px;
-        z-index: 1000;
-        color: #000;
-        width: 200px;
-       max-height: 300px; 
-    overflow-y: auto; 
-    }
-    
-    .user-menu.active {
-        display: block;
-    }
-    
-    .user-menu a {
-        display: block;
-        padding: 8px;
-        color: #becf5c;
-        text-decoration: none;
-    }
-    
-    .user-menu a:hover {
-        background-color: #f1f1f1;
-    }
-    
-    .user-initials {
-        text-transform: uppercase;
+        box-sizing: border-box;
     }
 
+    .photos img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+    }
 
-    
-/* Media Queries para hacer la página responsiva */
-@media (max-width: 1200px) {
-    .container {
-        padding: 0 10px;
+    .info-item {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .info-item img {
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+
+    .info-button-container {
+        text-align: right;
     }
 }
+
 
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
+        align-items: flex-start;
+        padding: 20px; /* Igual que en 480px */
         height: auto;
     }
 
-    .header-content nav {
-        margin-top: 10px;
+    .nav-logo {
+        margin-bottom: 10px;
+    }
+
+    nav {
+        width: 100%;
     }
 
     nav ul {
         flex-direction: column;
-        gap: 10px;
+        align-items: flex-start;
+        width: 100%;
+        gap: 5px; /* Igual que en 480px */
+    }
+
+    nav ul li {
+        width: 100%;
+    }
+
+    nav ul li a {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border-radius: 0;
+        text-align: left;
+        box-sizing: border-box; /* Ajuste para no sobresalir de la pantalla */
     }
 
     .photos img {
@@ -305,64 +381,80 @@ footer .social-icons a:hover {
     .info-button-container {
         text-align: left;
     }
+    .user-menu {
+        width: calc(100% - 20px); /* Ajusta el ancho para que se ajuste a la pantalla */
+        right: 10px; /* Añade un margen para evitar que se quede pegado al borde */
+    }
+
+    .user-menu.active {
+        display: block;
+    }
+
+    .user-menu a {
+        color: #000;
+        text-decoration: none;
+        display: block;
+        padding: 5px 0;
+    }
+
+    .user-menu a:hover {
+        text-decoration: underline;
+    }
 }
+
 
 @media (max-width: 480px) {
     .header-content {
-        padding: 10px;
-    }
-
-    .nav-logo .logo {
-        max-width: 100px;
-    }
-
-    .header-content nav ul li a {
-        padding: 5px;
-        font-size: 14px;
-    }
-
-    .intro h2 {
-        font-size: 24px;
-    }
-
-    .intro p {
-        font-size: 16px;
-    }
-
-    .menu-button {
-        padding: 8px 16px;
-        font-size: 14px;
-    }
-
-    .info h2 {
-        font-size: 24px;
-    }
-
-    .info-item {
-        padding: 10px 5px;
-    }
-
-    /* Ajustes adicionales para el header en pantallas pequeñas */
-    .header-content {
         flex-direction: column;
-        align-items: center;
-        padding: 10px;
+        align-items: flex-start;
+        padding: 20px; /* Ajuste de padding */
+        height: auto;
     }
 
-    .header-content nav ul {
+    .nav-logo {
+        margin-bottom: 10px;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
         flex-direction: column;
-        align-items: center;
-        gap: 5px;
+        align-items: flex-start;
+        width: 100%;
+        gap: 5px; /* Ajuste del espacio entre los elementos */
     }
 
     nav ul li {
         width: 100%;
-        text-align: center;
     }
 
     nav ul li a {
+        display: block;
         width: 100%;
         padding: 10px;
-        border-radius: 10px;
+        border-radius: 0;
+        text-align: left;
+        box-sizing: border-box; /* Ajuste para no sobresalir de la pantalla */
+    }
+
+    .photos img {
+        width: 100%;
+        height: auto;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .info-item img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .info-button-container {
+        text-align: left;
     }
 }
