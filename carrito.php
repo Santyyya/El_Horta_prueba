@@ -1,9 +1,9 @@
 <?php
 session_start();
-include('productos.php'); // Asegúrate de que productos.php tiene las imágenes
+include('productos.php');
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php"); // Redirigir al usuario a la página de inicio de sesión si no está logueado
+    header("Location: login.php"); 
     exit;
 }
 
@@ -29,6 +29,7 @@ foreach ($_SESSION['carrito'] as $item_id => $quantity) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito - Taquería Mi Vecindario</title>
     <link rel="stylesheet" href="CSS/carrito.css">
+    <link rel="icon" href="Resourses/7633253-removebg-preview.png" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -65,7 +66,6 @@ foreach ($_SESSION['carrito'] as $item_id => $quantity) {
                     $subtotal = $producto['precio'] * $quantity;
                     ?>
                     <div class="cart-item">
-                        <img src="Resourses/<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
                         <div class="cart-item-details">
                             <div class="cart-item-name"><?php echo $producto['nombre']; ?></div>
                             <div class="cart-item-price">$<?php echo number_format($producto['precio'], 2); ?></div>
@@ -98,10 +98,9 @@ foreach ($_SESSION['carrito'] as $item_id => $quantity) {
     </div>
     <footer>
         <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/4DB59jmaFHCS54vK/?mibextid=qi2Omg" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/taqueriaelhorta/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@taqueria_el_horta" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
         <p>&copy; 2024 Taquería El Horta. Todos los derechos reservados.</p>
     </footer>    

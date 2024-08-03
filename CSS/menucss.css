@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -12,10 +13,22 @@ header {
     align-items: center;
     background-color: #333;
     padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav-logo {
+    flex-shrink: 0;
 }
 
 .nav-logo .logo {
     max-width: 100px;
+}
+
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul {
@@ -24,6 +37,10 @@ nav ul {
     gap: 15px;
     margin: 0;
     padding: 0;
+}
+
+nav ul li {
+    display: flex;
 }
 
 nav ul li a {
@@ -142,16 +159,8 @@ footer .social-icons a:hover {
         font-size: 14px;
     }
 
-    .admin-container {
-        padding: 15px;
-    }
-
-    .admin-container h1 {
-        font-size: 24px;
-    }
-
-    .admin-container th, .admin-container td {
-        padding: 8px;
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 }
 
@@ -191,19 +200,6 @@ footer .social-icons a:hover {
         text-align: center;
         padding: 8px;
     }
-
-    .admin-container {
-        padding: 10px;
-    }
-
-    .admin-container h1 {
-        font-size: 20px;
-    }
-
-    .admin-container th, .admin-container td {
-        padding: 6px;
-        font-size: 14px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -216,16 +212,27 @@ footer .social-icons a:hover {
         font-size: 12px;
     }
 
-    .admin-container {
-        padding: 5px;
+    .menu-category h3 {
+        font-size: 20px;
     }
 
-    .admin-container h1 {
-        font-size: 18px;
+    .menu-item {
+        padding: 10px;
     }
 
-    .admin-container th, .admin-container td {
-        padding: 4px;
+    .menu-item h4 {
+        font-size: 16px;
+    }
+
+    .menu-item .description {
         font-size: 12px;
+    }
+
+    .menu-item p {
+        font-size: 14px;
+    }
+
+    .order-button {
+        padding: 8px;
     }
 }

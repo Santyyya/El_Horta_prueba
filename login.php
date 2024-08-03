@@ -93,10 +93,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <footer class="bg-dark text-light text-center py-3">
         <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank" class="text-light mr-2"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.twitter.com" target="_blank" class="text-light mr-2"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com" target="_blank" class="text-light mr-2"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com" target="_blank" class="text-light"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/4DB59jmaFHCS54vK/?mibextid=qi2Omg" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/taqueriaelhorta/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@taqueria_el_horta" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
         <p class="mb-0">&copy; 2024 Taquería Mi Vecindario. Todos los derechos reservados.</p>
     </footer>

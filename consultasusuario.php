@@ -1,6 +1,7 @@
 <?php
 require 'conexion.php';
 
+
 // Obtener todos los usuarios
 $sql = "SELECT * FROM usuarios";
 $result = mysqli_query($db, $sql);
@@ -33,6 +34,7 @@ if (isset($_GET['detalles'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administración de Usuarios</title>
     <link rel="stylesheet" href="CSS/consultasusuarios.css">
+    <link rel="icon" href="Resourses/7633253-removebg-preview.png" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -60,7 +62,8 @@ if (isset($_GET['detalles'])) {
                 <th>Teléfono</th>
                 <th>Contraseña</th>
                 <th>Correo</th>
-                <th>Acciones</th>
+                <th>Eliminar</th>
+                <th>Editar</th>
             </tr>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
             <tr>
@@ -74,6 +77,12 @@ if (isset($_GET['detalles'])) {
                     <form action="eliminar_usuario.php" method="POST">
                         <input type="hidden" name="id" value="<?php echo $row['idusuarios']; ?>">
                         <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+                <td>
+                <form action="editar_usuario.php" method="GET" style="display:inline;">
+                        <input type="hidden" name="id" value="<?php echo $row['idusuarios']; ?>">
+                        <button type="submit">Editar</button>
                     </form>
                 </td>
             </tr>
@@ -92,6 +101,7 @@ if (isset($_GET['detalles'])) {
                 <th>Usuario Id</th>
                 <th>Detalles del pedido</th>
                 <th>Eliminar</th>
+                <th>Editar</th>
             </tr>
             <?php while ($row = mysqli_fetch_assoc($result2)): ?>
             <tr>
@@ -109,6 +119,12 @@ if (isset($_GET['detalles'])) {
                         <button type="submit">Eliminar</button>
                     </form>
                 </td>
+                <td>
+                <form action="editar_pedido.php" method="GET">
+                    <input type="hidden" name="id" value="<?php echo $row['idpedidos']; ?>">
+                    <button type="submit">Editar</button>
+                </form>
+            </td>
             </tr>
             <?php endwhile; ?>
         </table>
@@ -134,10 +150,9 @@ if (isset($_GET['detalles'])) {
 
     <footer>
         <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/4DB59jmaFHCS54vK/?mibextid=qi2Omg" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/taqueriaelhorta/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@taqueria_el_horta" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
         <p>&copy; 2024 Taquería El Horta. Todos los derechos reservados.</p>
     </footer>

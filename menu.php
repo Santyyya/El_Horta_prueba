@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú - Taquería El Horta</title>
-    <link rel="stylesheet" href="CSS/menu.css">
+    <link rel="stylesheet" href="CSS/menucss.css">
 </head>
 <body>
     <header>
@@ -385,10 +385,9 @@
     </div>
     <footer>
         <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/4DB59jmaFHCS54vK/?mibextid=qi2Omg" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/taqueriaelhorta/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@taqueria_el_horta" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
         <p>&copy; 2024 Taquería El Horta. Todos los derechos reservados.</p>
     </footer>
